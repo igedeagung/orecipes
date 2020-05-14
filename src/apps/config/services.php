@@ -1,6 +1,8 @@
 <?php
 
-use Phalcon\Session\Adapter\Files as Session;
+// use Phalcon\Session\Adapter\Files as Session;
+use Phalcon\Session\Adapter\Stream as SessionAdapter;
+use Phalcon\Session\Manager as SessionManager;
 use Phalcon\Security;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Events\Event;
@@ -14,13 +16,22 @@ use Phalcon\Flash\Session as FlashSession;
 $container['config'] = function() use ($config) {
 	return $config;
 };
+$container->setShared('session', function () {
+    $session = new SessionManager();
+    $files = new SessionAdapter([
+        'savePath' => sys_get_temp_dir(),
+    ]);
+    $session->setAdapter($files);
+    $session->start();
 
-$container->setShared('session', function() {
-    $session = new Session();
-	$session->start();
-
-	return $session;
+    return $session;
 });
+// $container->setShared('session', function() {
+//     $session = new Session();
+// 	$session->start();
+
+// 	return $session;
+// });
 
 $container['dispatcher'] = function() {
 

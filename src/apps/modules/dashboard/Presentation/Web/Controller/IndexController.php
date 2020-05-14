@@ -8,12 +8,6 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        $db = $this->getDI()->get('db');
-
-        $sql = "SELECT * FROM faculty";
-
-        $result = $db->fetchOne($sql, \Phalcon\Db\Enum::FETCH_ASSOC);
-
-        echo var_dump($result);
+        
     }
 }
