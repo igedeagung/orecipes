@@ -1,12 +1,12 @@
 <?php
 
 return array(
-    'dashboard' => [
-        'namespace' => 'Its\Example\Dashboard',
-        'webControllerNamespace' => 'Its\Example\Dashboard\Presentation\Web\Controller',
+    'orecipes' => [
+        'namespace' => 'Orecipes',
+        'webControllerNamespace' => 'Orecipes\Presentation\Web\Controller',
         'apiControllerNamespace' => '',
-        'className' => 'Its\Example\Dashboard\Module',
-        'path' => APP_PATH . '/modules/dashboard/Module.php',
+        'className' => 'Orecipes\Module',
+        'path' => APP_PATH . '/modules/orecipes/Module.php',
         'defaultRouting' => true,
         'defaultController' => 'index',
         'defaultAction' => 'index'
