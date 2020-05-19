@@ -23,4 +23,21 @@ class SqlPostRepository implements PostRepository
         return $this->db->query($statement)
             ->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function save(Posts $post)
+    {
+        $statement = sprintf("INSERT INTO posts(id_user, judul, isi) VALUES(:id_user, :judul, :isi)" );
+        $params = ['id_user' => $post->id_user() , 'judul' => $post->judul(), 'isi' => $post->Isi()];
+
+        return $this->db->execute($statement, $params);
+    }
+
+    public function showPostById(int $id)
+    {
+        $statement = sprintf("SELECT * FROM posts WHERE id=:id");
+        $params=['id'=> $id];
+
+        return $this->db->query($statement, $params)
+            ->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

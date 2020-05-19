@@ -115,11 +115,15 @@
         <center><img src="{{ url('assets/img/logo.png') }}" style="height:50%;width:50%"></center>
     </div>
 
+    <div >
+        <a href="/idea/post/add" class="btn btn-primary">Tambah Resep</a>
+    </div>
+
     <ul>
         {% for post in posts %}
         <li>
             <div class="sticky">
-                <h2>Judul: {{ post['judul'] }}</h2>
+                <a href="/idea/post/show/{{ post['id'] }}"><h2>Judul: {{ post['judul'] }}</h2></a>
                 <p>Isi: {{ post['isi'] }}</p>
             </div>
         </li>
