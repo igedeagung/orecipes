@@ -30,4 +30,12 @@ $router->addPost('/idea/login', [
     'controller' => 'login',
     'action' => 'submit'
 ]);
+
+$router->addGet('/idea/logout', [
+    'namespace' => $namespace,
+    'module' => $module,
+    'controller' => 'login',
+    'action' => 'logout'
+]);
+
 return $router;

@@ -25,7 +25,7 @@ class SqlUserRepository implements UserRepository
     }
 
     public function find(string $email, string $password){
-        $statement = sprintf("SELECT * FROM users WHERE email=:email AND password=:password");
+        $statement = sprintf("SELECT id FROM users WHERE email=:email AND password=:password");
         $params = ['email' => $email, 'password' => $password];
 
         return $this->db->query($statement, $params)

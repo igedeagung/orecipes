@@ -26,7 +26,7 @@ class RegisterController extends Controller
             $response = $this->registerService->handle($request);
             
             if($response==="Success"){
-                return $this->response->redirect('idea/post');
+                return $this->response->redirect('idea/login');
             }
             else{
                 return $this->response->redirect('idea/register');

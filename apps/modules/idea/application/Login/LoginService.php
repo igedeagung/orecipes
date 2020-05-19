@@ -17,7 +17,6 @@ class LoginService
     public function handle(LoginRequest $request)
     {
         $response = $this->userRepository->find($request->getEmail(), $request->getPassword());
-
         return $response;
     }
 }

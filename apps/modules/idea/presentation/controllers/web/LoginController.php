@@ -15,7 +15,9 @@ class LoginController extends Controller
     }
 
     public function indexAction(){
-        
+        if($this->session->has("id")){
+            return $this->response->redirect('idea/post');
+        }
     }
     public function submitAction(){
         if ($this->request->isPost()) {
@@ -24,17 +26,23 @@ class LoginController extends Controller
 
             $request = new LoginRequest($email, $password);
             $response = $this->loginService->handle($request);
-            
-            if($response!= null){
-                $this->_registerSession($response);
-                return $this->response->redirect('/idea/post');
+
+            $id = $response[0]['id'];
+            if($response){
+                $this->session->set("id", $id);
+                return $this->response->redirect('idea/post');
             }
             else{
-                return $this->response->redirect('/idea/login');;
+                return $this->response->redirect('idea/login');;
             }
         }
         else{
             echo "Gagal!!!";
         }
+    }
+
+    public function logoutAction(){
+        $this->session->destroy();
+        $this->response->redirect();
     }
 }
