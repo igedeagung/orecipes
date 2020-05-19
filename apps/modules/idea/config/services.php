@@ -5,7 +5,10 @@
 // use Idy\Idea\Application\ViewAllIdeas\ViewAllIdeasService;
 // use Idy\Idea\Application\VoteIdea\VoteIdeaService;
 use Idy\Idea\Application\ShowPost\ShowPostService;
+use Idy\Idea\Application\ShowPostById\ShowPostByIdService;
+use Idy\Idea\Application\AddPost\AddPostService;
 use Idy\Idea\Application\Register\RegisterService;
+use Idy\Idea\Application\Login\LoginService;
 use Idy\Idea\Infrastructure\Transport\SwiftMailer;
 use Phalcon\Mvc\View;
 use Idy\Idea\Infrastructure\Persistence\SqlPostRepository;
@@ -85,8 +88,20 @@ $di->set('showPostService', function () use ($di) {
    return new ShowPostService($di->get('postRepository'));
 });
 
+$di->set('addPostService', function () use ($di) {
+    return new AddPostService($di->get('postRepository'));
+ });
+
+$di->set('showPostByIdService', function () use ($di) {
+    return new ShowPostByIdService($di->get('postRepository'));
+});
+
 $di->set('registerService', function () use ($di) {
     return new RegisterService($di->get('userRepository'));
+ });
+
+ $di->set('loginService', function () use ($di) {
+    return new LoginService($di->get('userRepository'));
  });
 // $di->set('ideaRepository', function() use ($di) {
 //     return new SqlIdeaRepository($di->get('db'));

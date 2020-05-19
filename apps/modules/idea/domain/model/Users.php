@@ -44,5 +44,6 @@ class Users
     {
         return new Users($nama, $email, $password);
     }
+    
 
 }
