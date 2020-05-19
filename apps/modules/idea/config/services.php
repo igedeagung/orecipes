@@ -1,12 +1,15 @@
 <?php
 
-use Idy\Idea\Application\CreateNewIdea\CreateNewIdeaService;
-use Idy\Idea\Application\RateIdea\RateIdeaService;
-use Idy\Idea\Application\ViewAllIdeas\ViewAllIdeasService;
-use Idy\Idea\Application\VoteIdea\VoteIdeaService;
+// use Idy\Idea\Application\CreateNewIdea\CreateNewIdeaService;
+// use Idy\Idea\Application\RateIdea\RateIdeaService;
+// use Idy\Idea\Application\ViewAllIdeas\ViewAllIdeasService;
+// use Idy\Idea\Application\VoteIdea\VoteIdeaService;
+use Idy\Idea\Application\ShowPost\ShowPostService;
+use Idy\Idea\Application\Register\RegisterService;
 use Idy\Idea\Infrastructure\Transport\SwiftMailer;
 use Phalcon\Mvc\View;
-use Idy\Idea\Infrastructure\Persistence\SqlIdeaRepository;
+use Idy\Idea\Infrastructure\Persistence\SqlPostRepository;
+use Idy\Idea\Infrastructure\Persistence\SqlUserRepository;
 
 $di['voltServiceMail'] = function($view) use ($di) {
 
@@ -55,37 +58,52 @@ $di['db'] = function () use ($di) {
 };
 
 
-$di->set('swiftMailerTransport', function ()  use ($di) {
-    $config = $di->get('config');
-    $transport = (new Swift_SmtpTransport($config->mail->smtp->server, $config->mail->smtp->port))
-        ->setUsername($config->mail->smtp->username)
-        ->setPassword($config->mail->smtp->password);
+// $di->set('swiftMailerTransport', function ()  use ($di) {
+//     $config = $di->get('config');
+//     $transport = (new Swift_SmtpTransport($config->mail->smtp->server, $config->mail->smtp->port))
+//         ->setUsername($config->mail->smtp->username)
+//         ->setPassword($config->mail->smtp->password);
 
-    return $transport;
+//     return $transport;
+// });
+
+// $di->set('swiftMailer', function () use ($di) {
+//     $mailer = new Swift_Mailer($di->get('swiftMailerTransport'));
+
+//     return new SwiftMailer($mailer);
+// });
+
+$di->set('postRepository', function() use ($di) {
+    return new SqlPostRepository($di->get('db'));
 });
 
-$di->set('swiftMailer', function () use ($di) {
-    $mailer = new Swift_Mailer($di->get('swiftMailerTransport'));
-
-    return new SwiftMailer($mailer);
+$di->set('userRepository', function() use ($di) {
+    return new SqlUserRepository($di->get('db'));
 });
 
-$di->set('ideaRepository', function() use ($di) {
-    return new SqlIdeaRepository($di->get('db'));
+$di->set('showPostService', function () use ($di) {
+   return new ShowPostService($di->get('postRepository'));
 });
 
-$di->set('viewAllIdeasService', function () use ($di) {
-   return new ViewAllIdeasService($di->get('ideaRepository'));
-});
+$di->set('registerService', function () use ($di) {
+    return new RegisterService($di->get('userRepository'));
+ });
+// $di->set('ideaRepository', function() use ($di) {
+//     return new SqlIdeaRepository($di->get('db'));
+// });
 
-$di->set('createNewIdeaService', function () use ($di) {
-   return new CreateNewIdeaService($di->get('ideaRepository'));
-});
+// $di->set('viewAllIdeasService', function () use ($di) {
+//    return new ViewAllIdeasService($di->get('ideaRepository'));
+// });
 
-$di->set('voteIdeaService', function () use ($di) {
-   return new VoteIdeaService($di->get('ideaRepository'));
-});
+// $di->set('createNewIdeaService', function () use ($di) {
+//    return new CreateNewIdeaService($di->get('ideaRepository'));
+// });
 
-$di->set('rateIdeaService', function () use ($di) {
-   return new RateIdeaService($di->get('ideaRepository'));
-});
+// $di->set('voteIdeaService', function () use ($di) {
+//    return new VoteIdeaService($di->get('ideaRepository'));
+// });
+
+// $di->set('rateIdeaService', function () use ($di) {
+//    return new RateIdeaService($di->get('ideaRepository'));
+// });
