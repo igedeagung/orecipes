@@ -24,4 +24,10 @@ $router->addGet('/idea/post', [
     'action' => 'index'
 ]);
 
+$router->addPost('/idea/login', [
+    'namespace' => $namespace,
+    'module' => $module,
+    'controller' => 'login',
+    'action' => 'submit'
+]);
 return $router;

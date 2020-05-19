@@ -24,6 +24,7 @@ class RegisterController extends Controller
 
             $request = new RegisterRequest($nama, $email, $password);
             $response = $this->registerService->handle($request);
+            
             if($response==="Success"){
                 return $this->response->redirect('idea/post');
             }

@@ -23,4 +23,12 @@ class SqlUserRepository implements UserRepository
 
         return $this->db->execute($statement, $params);
     }
+
+    public function find(string $email, string $password){
+        $statement = sprintf("SELECT * FROM users WHERE email=:email AND password=:password");
+        $params = ['email' => $email, 'password' => $password];
+
+        return $this->db->query($statement, $params)
+            ->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
