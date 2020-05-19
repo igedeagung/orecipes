@@ -20,7 +20,7 @@
         <div class="card shadow " >
           <div class="card-body">
               <h3 class="card-title font-weight-bolder p-3 text-center">DAFTAR AKUN</h3>
-              <form action="/idea/register/submit" method="POST">
+              <form action="/idea/register" method="POST">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nama</label>
                     <input type="text" name="nama"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

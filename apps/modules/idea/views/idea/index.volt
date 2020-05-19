@@ -35,7 +35,7 @@
                     <div class="align-self-center">
                         <h1 class=" mb-0">Luapkan keluh kesahmu disini</h1>
                         <p class="lead" style="font-size: 16px;">Forum keluh kesah dan tanya jawab anak informatika ITS</p>
-                        <a href="/register" class="btn btn-lg btn-outline-primary"> Daftar Sekarang</a>
+                        <a href="idea/register" class="btn btn-lg btn-outline-primary"> Daftar Sekarang</a>
                     </div>
                     <div class="just">
                         <img src="https://i.ibb.co/CJrX4m2/iPad-1.png" style="height: 447px; width: 697px; object-fit: contain;" alt="" srcset="">
