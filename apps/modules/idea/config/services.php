@@ -8,12 +8,8 @@ use Idy\Idea\Application\ShowPost\ShowPostService;
 use Idy\Idea\Application\ShowPostById\ShowPostByIdService;
 use Idy\Idea\Application\AddPost\AddPostService;
 use Idy\Idea\Application\Register\RegisterService;
-<<<<<<< HEAD
 use Idy\Idea\Application\Login\LoginService;
 use Idy\Idea\Infrastructure\Transport\SwiftMailer;
-=======
-// use Idy\Idea\Infrastructure\Transport\SwiftMailer;
->>>>>>> 82f9eb52cc695dd8217284dc46c87e9d0dfb5cf0
 use Phalcon\Mvc\View;
 use Idy\Idea\Infrastructure\Persistence\SqlPostRepository;
 use Idy\Idea\Infrastructure\Persistence\SqlUserRepository;
