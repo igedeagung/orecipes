@@ -12,146 +12,110 @@
     </style>
 </head>
 
+<!-- code taken from https://mdbootstrap.com/snippets/jquery/jakubowczarek/893358 -->
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body{
+        font-family:arial,sans-serif;
+        font-size:100%;
+        margin:3em;
+        background:#666;
+        color:#fff;
+    }
+    h2,p{
+        font-size:100%;
+        font-weight:normal;
+        color: black;
+    }
+    ul,li{
+        list-style:none;
+    }
+    ul .allpost{
+        overflow:hidden;
+        padding:3em;
+    }
+    ul li .sticky {
+        text-decoration:none;
+        color:black;
+        background:#e68b87;
+        display:block;
+        height:15em;
+        width:15em;
+        padding:1em;
+        -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+        /* Safari+Chrome */
+        -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+        /* Opera */
+        box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+        -moz-transition:-moz-transform .15s linear;
+        -o-transition:-o-transform .15s linear;
+        -webkit-transition:-webkit-transform .15s linear;
+    }
+    ul li .sticky{
+        margin:1em;
+        float:left;
+    }
+    ul li h2{
+        font-size:140%;
+        font-weight:bold;
+        padding-bottom:10px;
+    }
+    ul li p{
+        font-family:"Reenie Beanie",arial,sans-serif;
+    }
+    ul li .sticky:hover,ul li .sticky:focus{
+        -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
+        -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+        box-shadow:10px 10px 7px rgba(0,0,0,.7);
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        position:relative;
+        z-index:5;
+    }
+</style>
+    
 <body>
-
-    <!-- code taken from https://mdbootstrap.com/snippets/jquery/jakubowczarek/893358 -->
-    <style>
-        *{
-            margin:0;
-            padding:0;
-        }
-        body{
-            font-family:arial,sans-serif;
-            font-size:100%;
-            margin:3em;
-            background:#666;
-            color:#fff;
-        }
-        h2,p{
-            font-size:100%;
-            font-weight:normal;
-            color: black;
-        }
-        ul,li{
-            list-style:none;
-        }
-        ul{
-            overflow:hidden;
-            padding:3em;
-        }
-        ul li .sticky {
-            text-decoration:none;
-            color:#000;
-            background:#f6ff7a;
-            display:block;
-            height:15em;
-            width:15em;
-            padding:1em;
-            -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
-            /* Safari+Chrome */
-            -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-            /* Opera */
-            box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-            -moz-transition:-moz-transform .15s linear;
-            -o-transition:-o-transform .15s linear;
-            -webkit-transition:-webkit-transform .15s linear;
-        }
-        ul li{
-            margin:1em;
-            float:left;
-        }
-        ul li h2{
-            font-size:140%;
-            font-weight:bold;
-            padding-bottom:10px;
-        }
-        ul li p{
-            font-family:"Reenie Beanie",arial,sans-serif;
-        }
-        ul li:nth-child(even) .sticky {
-            -o-transform:rotate(4deg);
-            -webkit-transform:rotate(4deg);
-            -moz-transform:rotate(4deg);
-            position:relative;
-            top:5px;
-        }
-        ul li:nth-child(3n) .sticky {
-            -o-transform:rotate(-3deg);
-            -webkit-transform:rotate(-3deg);
-            -moz-transform:rotate(-3deg);
-            position:relative;
-            top:-5px;
-            background:#f26b6b;
-        }
-        ul li:nth-child(5n) .sticky {
-            -o-transform:rotate(5deg);
-            -webkit-transform:rotate(5deg);
-            -moz-transform:rotate(5deg);
-            position:relative;
-            top:-10px;
-            background: #6bbcf2;
-        }
-        ul li .sticky:hover,ul li .sticky:focus{
-            -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
-            -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
-            box-shadow:10px 10px 7px rgba(0,0,0,.7);
-            -webkit-transform: scale(1.1);
-            -moz-transform: scale(1.1);
-            -o-transform: scale(1.1);
-            position:relative;
-            z-index:5;
-        }
-        
-        form label {
-            color: #000 !important;
-        }
-    </style>
+    
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="/"><>ForumTC</a>
+            <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="bg-primary nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/session">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <div class="sessionMessage">
         <p><?php $this->flashSession->output() ?></p>
     </div>
 
-    <div>
-        <center><img src="{{ url('assets/img/logo.png') }}" style="height:50%;width:50%"></center>
-    </div>
-
-    <div >
-        <a href="/idea/post/add" class="btn btn-primary">Tambah Resep</a>
-    </div>
-
-    <ul>
-        {% for post in posts %}
-        <li>
-            <div class="sticky">
-                <a href="/idea/post/show/{{ post['id'] }}"><h2>Judul: {{ post['judul'] }}</h2></a>
-                <p>Isi: {{ post['isi'] }}</p>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-
-    <div class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="#">
-                        <div class="form-group">
-                            <label for="">Rating</label>
-                            <input type="number" class="form-control" name="value" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Name</label>
-                            <input type="text" class="form-control" name="name" required>
-                        </div>
-                        <button class="btn btn-success btn-form-rate">Rate</button>
-                    </form>
-                </div>
-            </div>
+    <div class="container">
+        <div>
+            <center><img src="{{ url('assets/img/logo.png') }}" style="height:50%;width:50%"></center>
         </div>
+
+        <div >
+            <a href="/idea/post/add" class="btn btn-primary">Tambah Resep</a>
+        </div>
+
+        <ul class="allpost">
+            {% for post in posts %}
+            <li>
+                <div class="sticky">
+                    <a href="/idea/post/show/{{ post['id'] }}"><h2>Judul: {{ post['judul'] }}</h2></a>
+                    <p>Isi: {{ post['isi'] }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
