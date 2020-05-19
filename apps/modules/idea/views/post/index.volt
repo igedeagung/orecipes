@@ -72,10 +72,6 @@
         </div>
         <!--Grid column-->
       </div>
-      
-      <div class="text-center mt-4 mb-5">
-        <a class="black-text font-weight-bold" href="#!">Browse all articles <i class="fa fa-angle-right"></i></a>
-      </div>
   
     </section>
     <!--Section: Content-->
