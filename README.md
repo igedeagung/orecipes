@@ -4,5 +4,5 @@
 2. Install Phalcon https://phalcon.io/en-us
 3. Run database.sql
 4. copy .env.example ke .env dan isi parameter sesuai kebutuhan.
-6. run composer install
-7. buka uri pada web browser. project ini menggunakan uri http://idy.local
+5. run composer install
+6. buka uri pada web browser. project ini menggunakan uri http://idy.local
