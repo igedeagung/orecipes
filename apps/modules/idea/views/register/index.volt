@@ -40,7 +40,7 @@
                   </div>
                   <div class="form-group">
                     <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-                    <small class="content-align-left"><a href="/session">Masuk, jika memiliki akun</a></small>
+                    <small class="content-align-left"><a href="/idea/login">Masuk, jika memiliki akun</a></small>
                   </div>
                 </form>
           </div>

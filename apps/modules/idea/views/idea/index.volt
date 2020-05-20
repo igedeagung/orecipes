@@ -19,36 +19,36 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="/"><>ForumTC</a>
+                <a class="navbar-brand js-scroll-trigger text-white" href="/"><strong><b>Orecipes</b></strong></a>
                 <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
-                        {% if session.has('id') %}
-                            <li class="nav-item mx-0 mx-lg-1"><a class="bg-primary nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/idea/logout">Logout</a></li>
-                        {% else %}
-                            <li class="nav-item mx-0 mx-lg-1"><a class="bg-primary nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/idea/login">Login</a></li>
-                        {% endif %}
-                    </ul>
+                  <ul class="navbar-nav ml-auto">
+                    {% if session.has('id') %}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="btn btn-primary" href="/idea/logout">Logout</a></li>
+                    {% else %}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="btn btn-primary" href="/idea/login">Login</a></li>
+                    {% endif %}
+                </ul>
                 </div>
             </div>
-        </nav>
+          </nav><br>
         <!-- Masthead-->
         <header class="masthead bg-dark text-white">
             <div class="container d-flex justify-content-between">
                     <div class="align-self-center">
-                        <h1 class=" mb-0">Luapkan keluh kesahmu disini</h1>
-                        <p class="lead" style="font-size: 16px;">Forum keluh kesah dan tanya jawab anak informatika ITS</p>
-                        <a href="idea/register" class="btn btn-lg btn-outline-primary"> Daftar Sekarang</a>
+                        <h1 class=" mb-0">Let Food Be Your Medicine</h1>
+                        <p class="lead" style="font-size: 16px;">Obati rasa laparmu dengan berbagai resep yang menarik</p>
+                        <a href="idea/register" class="btn btn-lg btn-primary"> Daftar Sekarang</a>
+                        <a href="idea/post" class="btn btn-lg btn-primary">Lihat Resep</a>
                     </div>
                     <div class="just">
-                        <img src="https://i.ibb.co/CJrX4m2/iPad-1.png" style="height: 447px; width: 697px; object-fit: contain;" alt="" srcset="">
+                        <img src="{{ url('assets/img/logo.png') }}" style="height: 447px; width: 697px; object-fit: contain;" alt="" srcset="">
                     </div>
                 </div>
             </div>
         </header>
         
-        <!-- Footer-->
+        <!-- Footer--><br>
         <footer class="footer text-center" id="about">
             <div class="container">
                 <div class="row">
@@ -56,7 +56,8 @@
                     <div class="col-lg-6 mb-5 mb-lg-0">
                         <h4 class="text-uppercase mb-4">Developer</h4>
                         <p class="lead mb-0">I Gede Agung K.P</p>
-                        <p class="lead mb-0">Tria Nur Aisyah A.</p>
+                        <p class="lead mb-0">Kholishotul Amaliah</p>
+                        <p class="lead mb-0">Sudrajad Hadi Saputra</p>
                     </div>
                     <!-- Footer Social Icons-->
                     <!-- <div class="col-lg-4 mb-5 mb-lg-0">
@@ -66,7 +67,7 @@
                     <!-- Footer About Text-->
                     <div class="col-lg-6">
                         <h4 class="text-uppercase mb-4">About This</h4>
-                        <p class="lead mb-0">Website ini dibuat dalam rangka menyelesaikan tugas akhir mata kuliah PBKK</p>
+                        <p class="lead mb-0">Website ini dibuat dalam rangka menyelesaikan tugas akhir mata kuliah APL</p>
                     </div>
                 </div>
             </div>
