@@ -28,7 +28,7 @@
         <center><div>
           <br><br>
           <a href="/idea/post/index" class="btn btn-primary">Kembali</a>
-          {% if session.has('id') %}
+          {% if session.has('id') AND session.get('id') === post[0]['id_user'] %}
             <a href="/idea/post/edit/{{ post[0]['id'] }}" class="btn btn-primary float-left"><i class="fa fa-pencil"> Edit</i></a>
             <a href="/idea/post/delete/{{ post[0]['id'] }}" class="btn btn-primary float-right"><i class="fa fa-trash"> Hapus</i></a>
           {% endif %}
