@@ -7,6 +7,8 @@
 use Idy\Idea\Application\ShowPost\ShowPostService;
 use Idy\Idea\Application\ShowPostById\ShowPostByIdService;
 use Idy\Idea\Application\AddPost\AddPostService;
+use Idy\Idea\Application\EditPost\EditPostService;
+use Idy\Idea\Application\DeletePost\DeletePostService;
 use Idy\Idea\Application\Register\RegisterService;
 use Idy\Idea\Application\Login\LoginService;
 use Phalcon\Mvc\View;
@@ -101,6 +103,14 @@ $di->set('registerService', function () use ($di) {
 
  $di->set('loginService', function () use ($di) {
     return new LoginService($di->get('userRepository'));
+ });
+
+ $di->set('editPostService', function () use ($di) {
+    return new EditPostService($di->get('postRepository'));
+ });
+
+ $di->set('deletePostService', function () use ($di) {
+    return new DeletePostService($di->get('postRepository'));
  });
 // $di->set('ideaRepository', function() use ($di) {
 //     return new SqlIdeaRepository($di->get('db'));

@@ -19,15 +19,18 @@
         </div>
         <div class="card shadow " >
           <div class="card-body">
-              <h3 class="card-title font-weight-bolder p-3 text-center">Tambah Resep</h3>
-              <form action="/idea/post/addSubmit" method="POST">
+              <h3 class="card-title font-weight-bolder p-3 text-center">Edit Resep</h3>
+              <form action="/idea/post/editSubmit" method="POST">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Judul</label>
-                  <input type="text" name="judul"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input type="text" name="judul"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ post[0]['judul'] }}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Isi</label>
-                  <textarea name="isi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">Bahan-bahan : Langkah : </textarea>
+                  <textarea name="isi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">{{ post[0]['isi'] }}</textarea>
+                </div>
+                <div class="form-group">
+                  <input type="hidden" name="postId" value="{{ post[0]['id'] }}">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-sm btn-primary">Submit</button>

@@ -38,7 +38,9 @@
     <!--Section: Content-->
     <section class="">
       <!-- Section heading -->
+        {% if session.has('id') %}
         <center><a href="/idea/post/add"><button class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Resep</button></a></center><br>
+        {% endif %}
 
         <div class="row">
           {% for post in posts %}
@@ -54,7 +56,7 @@
                 <h4 class="card-title"><strong>{{ post['judul'] }}</strong></h4>
                 <hr>
                 <!--Text-->
-                <p class="card-text mb-3"><p>Isi: {{ post['isi'] }}</p>
+                <p class="card-text mb-3"><p>{{ post['isi'] }}</p>
 
                 </p>
                 <p class="text-right mb-0 font-small font-weight-bold"><a href="/idea/post/show/{{ post['id'] }}">read more <i class="fa fa-angle-right"></i></a></p>

@@ -40,4 +40,20 @@ class SqlPostRepository implements PostRepository
         return $this->db->query($statement, $params)
             ->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    public function update(int $id, string $judul, string $isi)
+    {
+        $statement = sprintf("UPDATE posts SET judul=:judul, isi=:isi WHERE id=:id" );
+        $params = ['judul' => $judul, 'isi' => $isi, 'id' => $id];
+
+        return $this->db->execute($statement, $params);
+    }
+
+    public function delete(int $id)
+    {
+        $statement = sprintf("DELETE FROM posts WHERE id=:id" );
+        $params = ['id' => $id];
+
+        return $this->db->execute($statement, $params);
+    }
 }
