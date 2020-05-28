@@ -16,10 +16,10 @@ class SqlRecipeRepository implements LikeRepository
         $this->db = $db;
     }
 
-    public function countLikeById(int $id)
+    public function countLikeByIdUser(int $id_user)
     {
-        $statement = sprintf("SELECT COUNT(id_recipes) FROM likes WHERE id_user:id");
-        $params=['id'=> $id];
+        $statement = sprintf("SELECT COUNT(id_recipes) FROM likes WHERE id_user:id_user");
+        $params=['id_user'=> $id_user];
 
         return $this->db->query($statement, $params)
             ->fetchAll(PDO::FETCH_ASSOC);
