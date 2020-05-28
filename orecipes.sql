@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Bulan Mei 2020 pada 14.10
+-- Waktu pembuatan: 28 Bulan Mei 2020 pada 14.23
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.2.30
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `orecipes`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `like`
+--
+
+CREATE TABLE `like` (
+  `id_like` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_recipes` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -73,6 +85,12 @@ INSERT INTO `users` (`id`, `nama`, `email`, `password`) VALUES
 --
 
 --
+-- Indeks untuk tabel `like`
+--
+ALTER TABLE `like`
+  ADD PRIMARY KEY (`id_like`);
+
+--
 -- Indeks untuk tabel `recipes`
 --
 ALTER TABLE `recipes`
@@ -88,6 +106,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
+
+--
+-- AUTO_INCREMENT untuk tabel `like`
+--
+ALTER TABLE `like`
+  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `recipes`
