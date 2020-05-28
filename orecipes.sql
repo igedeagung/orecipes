@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Bulan Mei 2020 pada 13.02
+-- Waktu pembuatan: 28 Bulan Mei 2020 pada 14.10
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.2.30
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `posts`
+-- Struktur dari tabel `recipes`
 --
 
-CREATE TABLE `posts` (
+CREATE TABLE `recipes` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `judul` varchar(50) NOT NULL,
@@ -35,12 +35,14 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `posts`
+-- Dumping data untuk tabel `recipes`
 --
 
-INSERT INTO `posts` (`id`, `id_user`, `judul`, `isi`) VALUES
+INSERT INTO `recipes` (`id`, `id_user`, `judul`, `isi`) VALUES
 (1, 1, 'Ayam Goreng', 'bahan bahan: ayam 1 kg'),
-(2, 1, 'Bawang goreng', 'Bahan: Bawang 1kg');
+(2, 1, 'Bawang goreng', 'Bahan: Bawang 1kg'),
+(5, 1, 'Nasi', 'Dimasak\r\n'),
+(7, 6, 'Tahu Goreng', 'Bahan-bahan : Tahu Langkah : Digoreng');
 
 -- --------------------------------------------------------
 
@@ -62,16 +64,18 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `nama`, `email`, `password`) VALUES
 (1, '1', 'Gede', 'gede123'),
 (2, 'Gede', 'gede@gmail.com', 'gede123'),
-(3, 'budi', 'budi@gmail.com', 'budi123');
+(3, 'budi', 'budi@gmail.com', 'budi123'),
+(6, 'Firsa Wastikawati', 'sasa@gmail.com', 'sasa'),
+(7, 'Firsa Wastikawati', 'gelombang05@gmail.com', 'sasa');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `posts`
+-- Indeks untuk tabel `recipes`
 --
-ALTER TABLE `posts`
+ALTER TABLE `recipes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_foreign_key_post` (`id_user`);
 
@@ -86,25 +90,25 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `posts`
+-- AUTO_INCREMENT untuk tabel `recipes`
 --
-ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `recipes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Ketidakleluasaan untuk tabel `posts`
+-- Ketidakleluasaan untuk tabel `recipes`
 --
-ALTER TABLE `posts`
+ALTER TABLE `recipes`
   ADD CONSTRAINT `fk_foreign_key_post` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
 COMMIT;
 
