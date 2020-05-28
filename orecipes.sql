@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `like`
+-- Struktur dari tabel `likes`
 --
 
-CREATE TABLE `like` (
+CREATE TABLE `likes` (
   `id_like` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_recipes` int(11) NOT NULL
@@ -85,10 +85,10 @@ INSERT INTO `users` (`id`, `nama`, `email`, `password`) VALUES
 --
 
 --
--- Indeks untuk tabel `like`
+-- Indeks untuk tabel `likes`
 --
-ALTER TABLE `like`
-  ADD PRIMARY KEY (`id_like`);
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id_likes`);
 
 --
 -- Indeks untuk tabel `recipes`
@@ -108,10 +108,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `like`
+-- AUTO_INCREMENT untuk tabel `likes`
 --
-ALTER TABLE `like`
-  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `likes`
+  MODIFY `id_likes` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `recipes`
