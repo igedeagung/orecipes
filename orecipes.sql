@@ -88,7 +88,7 @@ INSERT INTO `users` (`id`, `nama`, `email`, `password`) VALUES
 -- Indeks untuk tabel `likes`
 --
 ALTER TABLE `likes`
-  ADD PRIMARY KEY (`id_likes`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `recipes`
@@ -111,7 +111,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id_likes` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `recipes`
