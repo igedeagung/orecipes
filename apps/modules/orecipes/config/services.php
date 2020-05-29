@@ -3,6 +3,8 @@
 use Orecipes\Application\ShowRecipe\ShowRecipeService;
 use Orecipes\Application\ShowRecipeById\ShowRecipeByIdService;
 use Orecipes\Application\AddRecipe\AddRecipeService;
+use Orecipes\Application\AddLike\AddLikeService;
+use Orecipes\Application\Unlike\UnlikeService;
 use Orecipes\Application\EditRecipe\EditRecipeService;
 use Orecipes\Application\DeleteRecipe\DeleteRecipeService;
 use Orecipes\Application\Register\RegisterService;
@@ -10,6 +12,7 @@ use Orecipes\Application\Login\LoginService;
 use Phalcon\Mvc\View;
 use Orecipes\Infrastructure\Persistence\SqlRecipeRepository;
 use Orecipes\Infrastructure\Persistence\SqlUserRepository;
+use Orecipes\Infrastructure\Persistence\SqlLikeRepository;
 
 $di['voltServiceMail'] = function($view) use ($di) {
 
@@ -81,6 +84,10 @@ $di->set('userRepository', function() use ($di) {
     return new SqlUserRepository($di->get('db'));
 });
 
+$di->set('likeRepository', function() use ($di) {
+    return new SqlLikeRepository($di->get('db'));
+});
+
 $di->set('showRecipeService', function () use ($di) {
    return new ShowRecipeService($di->get('recipeRepository'));
 });
@@ -89,6 +96,13 @@ $di->set('addRecipeService', function () use ($di) {
     return new AddRecipeService($di->get('recipeRepository'));
  });
 
+ $di->set('addLikeService', function () use ($di) {
+    return new AddLikeService($di->get('likeRepository'));
+ });
+
+ $di->set('unlikeService', function () use ($di) {
+    return new UnlikeService($di->get('likeRepository'));
+ });
 $di->set('showRecipeByIdService', function () use ($di) {
     return new ShowRecipeByIdService($di->get('recipeRepository'));
 });

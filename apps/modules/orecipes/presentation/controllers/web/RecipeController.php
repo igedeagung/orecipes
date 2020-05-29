@@ -6,6 +6,10 @@ use Orecipes\Application\ShowRecipe\ShowRecipeService;
 use Orecipes\Application\ShowRecipeById\ShowRecipeByIdService;
 use Orecipes\Application\AddRecipe\AddRecipeService;
 use Orecipes\Application\AddRecipe\AddRecipeRequest;
+use Orecipes\Application\AddLike\AddLikeService;
+use Orecipes\Application\AddLike\AddLikeRequest;
+use Orecipes\Application\Unlike\UnlikeService;
+use Orecipes\Application\Unlike\UnlikeRequest;
 use Orecipes\Application\EditRecipe\EditRecipeService;
 use Orecipes\Application\EditRecipe\EditRecipeRequest;
 use Orecipes\Application\DeleteRecipe\DeleteRecipeService;
@@ -54,7 +58,8 @@ class RecipeController extends Controller
     }
 
     public function showAction($id){
-        $haha=$this->showRecipeByIdService->handle($id);
+        $this->view->flagLike=$this->showRecipeByIdService->getFlagLike($id, $this->session->get('id'));
+        
         $this->view->recipe=$this->showRecipeByIdService->handle($id);
     }
     
@@ -87,6 +92,28 @@ class RecipeController extends Controller
         $response = $this->deleteRecipeService->handle($request);
         if($response==="Success"){
             return $this->response->redirect('orecipes/recipe');
+        }
+        else{
+            echo "Gagal!!!";
+        }
+    }
+
+    public function likeAction($id){
+        $request = new addLikeRequest($id, $this->session->get("id"));
+        $response= $this->addLikeService->handle($request);
+        if($response==="Success"){
+            return $this->response->redirect('orecipes/recipe/show/'.$id);
+        }
+        else{
+            echo "Gagal!!!";
+        }
+    }
+
+    public function unlikeAction($id){
+        $request = new unlikeRequest($id, $this->session->get("id"));
+        $response= $this->unlikeService->handle($request);
+        if($response==="Success"){
+            return $this->response->redirect('orecipes/recipe/show/'.$id);
         }
         else{
             echo "Gagal!!!";

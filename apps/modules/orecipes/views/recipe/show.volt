@@ -32,6 +32,11 @@
             <a href="/orecipes/recipe/edit/{{ recipe[0]['id'] }}" class="btn btn-primary float-left"><i class="fa fa-pencil"> Edit</i></a>
             <a href="/orecipes/recipe/delete/{{ recipe[0]['id'] }}" class="btn btn-primary float-right"><i class="fa fa-trash"> Hapus</i></a>
           {% endif %}
+          {% if flagLike == 0 %}
+            <a href="/orecipes/recipe/like/{{ recipe[0]['id'] }}" class="btn btn-primary float-right"><i class="fa fa-trash">Suka</i></a>
+          {% else %}
+            <a href="/orecipes/recipe/unlike/{{ recipe[0]['id'] }}" class="btn btn-primary float-right"><i class="fa fa-trash">Batalkan Suka</i></a>
+          {% endif %}
         </div></center>
       </div>
     </div>

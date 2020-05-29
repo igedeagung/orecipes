@@ -4,7 +4,7 @@ namespace Orecipes\Application\DeleteRecipe;
 
 class DeleteRecipeRequest
 {
-    public $id;
+    private $id;
 
     public function __construct($recipeId)
     {
@@ -14,10 +14,5 @@ class DeleteRecipeRequest
     public function getId()
     {
         return $this->id;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 }

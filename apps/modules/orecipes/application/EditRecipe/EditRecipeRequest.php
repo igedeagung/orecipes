@@ -4,9 +4,9 @@ namespace Orecipes\Application\EditRecipe;
 
 class EditRecipeRequest
 {
-    public $id;
-    public $judul;
-    public $isi;
+    private $id;
+    private $judul;
+    private $isi;
 
     public function __construct($recipeId, $judul, $isi)
     {
@@ -20,28 +20,13 @@ class EditRecipeRequest
         return $this->id;
     }
 
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
     public function getJudul()
     {
         return $this->judul;
     }
 
-    public function setJudul($judul)
-    {
-        $this->judul = $judul;
-    }
-
     public function getIsi()
     {
         return $this->isi;
-    }
-
-    public function setIsi($isi)
-    {
-        $this->isi = $isi;
     }
 }

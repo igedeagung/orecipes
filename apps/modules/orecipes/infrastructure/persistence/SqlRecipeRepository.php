@@ -56,4 +56,19 @@ class SqlRecipeRepository implements RecipeRepository
 
         return $this->db->execute($statement, $params);
     }
+
+    public function getFlagLike(int $id_recipes,$id_user)
+    {
+        $statement = sprintf("SELECT * FROM likes WHERE id_user=:id_user AND id_recipes=:id_recipes" );
+        $params = ['id_user' => $id_user , 'id_recipes' => $id_recipes];
+
+        $hasil = $this->db->query($statement, $params)->fetchAll(PDO::FETCH_ASSOC);;
+
+        if($hasil){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
 }

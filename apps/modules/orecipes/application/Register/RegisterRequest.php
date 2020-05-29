@@ -4,9 +4,9 @@ namespace Orecipes\Application\Register;
 
 class RegisterRequest
 {
-    public $nama;
-    public $email;
-    public $password;
+    private $nama;
+    private $email;
+    private $password;
 
     public function __construct($nama, $email, $password)
     {
@@ -20,30 +20,13 @@ class RegisterRequest
         return $this->nama;
     }
 
-
-    public function setNama($nama)
-    {
-        $this->nama = $nama;
-    }
-
     public function getEmail()
     {
         return $this->email;
     }
 
-
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
     public function getPassword()
     {
         return $this->password;
-    }
-
-    public function setPassword($password)
-    {
-        $this->password = $password;
     }
 }

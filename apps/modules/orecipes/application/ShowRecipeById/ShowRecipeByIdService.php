@@ -19,4 +19,9 @@ class ShowRecipeByIdService
         
         return $recipes;
     }
+    public function getFlagLike($id_recipes, $id_user){
+        $flag=$this->repository->getFlagLike($id_recipes, $id_user);
+        
+        return $flag;
+    }
 }

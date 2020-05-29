@@ -4,8 +4,8 @@ namespace Orecipes\Application\Login;
 
 class LoginRequest
 {
-    public $email;
-    public $password;
+    private $email;
+    private $password;
 
     public function __construct($email, $password)
     {
@@ -18,19 +18,8 @@ class LoginRequest
         return $this->email;
     }
 
-
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
     public function getPassword()
     {
         return $this->password;
-    }
-
-    public function setPassword($password)
-    {
-        $this->password = $password;
     }
 }
