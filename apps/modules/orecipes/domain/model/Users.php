@@ -4,8 +4,6 @@ namespace Orecipes\Domain\Model;
 
 class Users
 {
-    private $id;
-
     private $nama;
 
     private $email;
@@ -18,11 +16,6 @@ class Users
         $this->email = $email;
         $this->password = $password;
 
-    }
-
-    public function id() : string
-    {
-        return $this->id;
     }
 
     public function nama() : string

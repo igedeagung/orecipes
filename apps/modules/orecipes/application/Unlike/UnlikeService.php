@@ -16,11 +16,14 @@ class UnlikeService
 
     public function handle(UnlikeRequest $request)
     {
-        $like = Likes::makeLikes($request->getIdUser(), $request->getIdRecipes());
+        $response = $this->likeRepository->delete($request->getIdUser(), $request->getIdRecipes());
 
-        $response = $this->likeRepository->delete($like);
-
-        $success="Success";
+        if($response){
+            $success="Success";
+        }
+        else{
+            $success="Gagal";
+        }
 
         return $success;
     }

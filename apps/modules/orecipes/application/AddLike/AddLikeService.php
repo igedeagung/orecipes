@@ -20,7 +20,12 @@ class AddLikeService
 
         $response = $this->likeRepository->save($like);
 
-        $success="Success";
+        if($response){
+            $success="Success";
+        }
+        else{
+            $success="Gagal";
+        }
 
         return $success;
     }

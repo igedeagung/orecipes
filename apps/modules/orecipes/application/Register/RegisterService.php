@@ -20,7 +20,12 @@ class RegisterService
 
         $response = $this->userRepository->save($user);
 
-        $success="Success";
+        if($response){
+            $success="Success";
+        }
+        else{
+            $success="Gagal";
+        }
 
         return $success;
     }

@@ -17,7 +17,12 @@ class DeleteRecipeService
     {
         $response = $this->recipeRepository->delete($request->getId());
 
-        $success="Success";
+        if($response){
+            $success="Success";
+        }
+        else{
+            $success="Gagal";
+        }
 
         return $success;
     }

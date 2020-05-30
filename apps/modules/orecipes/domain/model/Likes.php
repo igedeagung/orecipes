@@ -4,7 +4,6 @@ namespace Orecipes\Domain\Model;
 
 class Likes
 {
-    private $id;
     private $id_user;
     private $id_recipes;
 
@@ -12,11 +11,6 @@ class Likes
     {
         $this->id_user = $id_user;
         $this->id_recipes = $id_recipes;
-    }
-
-    public function id() : string
-    {
-        return $this->id;
     }
 
     public function id_user() : int

@@ -4,7 +4,6 @@ namespace Orecipes\Domain\Model;
 
 class Recipes
 {
-    private $id;
     private $id_user;
     private $judul;
     private $isi;
@@ -15,11 +14,6 @@ class Recipes
         $this->judul = $judul;
         $this->isi = $isi;
 
-    }
-
-    public function id() : string
-    {
-        return $this->id;
     }
 
     public function id_user() : int

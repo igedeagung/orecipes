@@ -17,7 +17,12 @@ class EditRecipeService
     {
         $response = $this->recipeRepository->update($request->getId(), $request->getJudul(),$request->getIsi());
 
-        $success="Success";
+        if($response){
+            $success="Success";
+        }
+        else{
+            $success="Gagal";
+        }
 
         return $success;
     }

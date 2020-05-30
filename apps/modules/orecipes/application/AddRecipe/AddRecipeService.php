@@ -20,7 +20,12 @@ class AddRecipeService
 
         $response = $this->recipeRepository->save($recipe);
 
-        $success="Success";
+        if($response){
+            $success="Success";
+        }
+        else{
+            $success="Gagal";
+        }
 
         return $success;
     }
