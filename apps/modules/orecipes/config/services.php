@@ -96,14 +96,15 @@ $di->set('addRecipeService', function () use ($di) {
     return new AddRecipeService($di->get('recipeRepository'));
  });
 
- $di->set('addLikeService', function () use ($di) {
-    return new AddLikeService($di->get('likeRepository'));
+$di->set('addLikeService', function () use ($di) {
+    return new AddLikeService($di->get('likeRepository'), $di->get('userRepository'));
  });
 
- $di->set('unlikeService', function () use ($di) {
-    return new UnlikeService($di->get('likeRepository'));
+$di->set('unlikeService', function () use ($di) {
+    return new UnlikeService($di->get('likeRepository'), $di->get('userRepository'));
  });
-$di->set('showRecipeByIdService', function () use ($di) {
+
+ $di->set('showRecipeByIdService', function () use ($di) {
     return new ShowRecipeByIdService($di->get('recipeRepository'));
 });
 

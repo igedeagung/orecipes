@@ -32,9 +32,9 @@ class SqlLikeRepository implements LikeRepository
         return $this->db->execute($statement, $params);
     }
 
-    public function delete(int $id_user, int $id_recipe){
+    public function delete(Likes $like){
         $statement = sprintf("DELETE FROM likes WHERE id_user=:id_user AND id_recipes=:id_recipes" );
-        $params = ['id_user' => $id_user , 'id_recipes' => $id_recipe];
+        $params = ['id_user' => $like->id_user() , 'id_recipes' => $like->id_recipes()];
 
         return $this->db->execute($statement, $params);
     }
