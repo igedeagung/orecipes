@@ -2,6 +2,7 @@
 
 use Orecipes\Application\ShowRecipe\ShowRecipeService;
 use Orecipes\Application\ShowRecipeById\ShowRecipeByIdService;
+use Orecipes\Application\ValidityAddRecipe\ValidityAddRecipeService;
 use Orecipes\Application\AddRecipe\AddRecipeService;
 use Orecipes\Application\AddLike\AddLikeService;
 use Orecipes\Application\Unlike\UnlikeService;
@@ -91,6 +92,10 @@ $di->set('likeRepository', function() use ($di) {
 $di->set('showRecipeService', function () use ($di) {
    return new ShowRecipeService($di->get('recipeRepository'));
 });
+
+$di->set('validityAddRecipeService', function () use ($di) {
+    return new ValidityAddRecipeService($di->get('userRepository'));
+ });
 
 $di->set('addRecipeService', function () use ($di) {
     return new AddRecipeService($di->get('recipeRepository'));

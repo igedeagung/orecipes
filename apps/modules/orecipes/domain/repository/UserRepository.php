@@ -11,4 +11,5 @@ interface UserRepository
     public function find(string $email, string $password);
     public function byId(int $id);
     public function updateLike(UserLikes $userlike);
+    public function checkCount(int $id);
 }

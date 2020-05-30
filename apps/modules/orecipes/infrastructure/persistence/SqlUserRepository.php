@@ -50,4 +50,12 @@ class SqlUserRepository implements UserRepository
 
         return $this->db->execute($statement, $params);
     }
+
+    public function checkCount(int $id){
+        $statement = sprintf("SELECT count_likes FROM users WHERE id=:id");
+        $params = ['id' => $id];
+
+        return $this->db->query($statement, $params)
+            ->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -4,6 +4,8 @@ namespace Orecipes\Presentation\Controllers\Web;
 use Phalcon\Mvc\Controller;
 use Orecipes\Application\ShowRecipe\ShowRecipeService;
 use Orecipes\Application\ShowRecipeById\ShowRecipeByIdService;
+use Orecipes\Application\ValidityAddRecipe\ValidityAddRecipeService;
+use Orecipes\Application\ValidityAddRecipe\ValidityAddRecipeRequest;
 use Orecipes\Application\AddRecipe\AddRecipeService;
 use Orecipes\Application\AddRecipe\AddRecipeRequest;
 use Orecipes\Application\AddLike\AddLikeService;
@@ -34,7 +36,15 @@ class RecipeController extends Controller
     }
 
     public function addAction(){
+        $id = $this->session->get('id');
 
+        $validRequest = new ValidityAddRecipeRequest($id);
+        $validResponse = $this->validityAddRecipeService->handle($validRequest);
+
+        if($validResponse != "Success"){
+            $this->flashSession->error($validResponse);
+            return $this->response->redirect('orecipes/recipe');
+        }
     }
 
     public function addSubmitAction(){

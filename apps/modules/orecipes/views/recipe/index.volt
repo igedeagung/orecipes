@@ -30,11 +30,11 @@
     </div>
   </nav><br>
 
-  <div class="sessionMessage">
-    <p><?php $this->flashSession->output() ?></p>
-  </div>
-
   <div class="container my-5">
+    <div class="sessionMessage">
+      <p><?php $this->flashSession->output() ?></p>
+    </div>
+
     <!--Section: Content-->
     <section class="">
       <!-- Section heading -->
