@@ -24,10 +24,12 @@
               <h5>{{ recipe[0]['judul'] }}</h5>
               <p><br>{{ recipe[0]['isi'] }}</p>
           </div>
-          {% if flagLike == 0 %}
+          {% if session.has('id') %}
+            {% if flagLike == 0 %}
             <a href="/orecipes/recipe/like/{{ recipe[0]['id'] }}" class="btn btn-primary float-right"><i class="fa fa-heart">   Suka</i></a>
-          {% else %}
+            {% else %}
             <a href="/orecipes/recipe/unlike/{{ recipe[0]['id'] }}" class="btn btn-primary float-right"><i class="fa fa-times">     Batalkan Suka</i></a>
+            {% endif %}
           {% endif %}
         </div>
 
