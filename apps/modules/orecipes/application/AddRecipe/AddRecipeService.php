@@ -18,15 +18,21 @@ class AddRecipeService
     {
         $recipe = Recipes::makeRecipe($request->getIdUser(), $request->getJudul(),$request->getIsi());
 
-        $response = $this->recipeRepository->save($recipe);
+        $result = $this->recipeRepository->save($recipe);
 
-        if($response){
-            $success="Success";
+        if($result){
+            $response=[
+                "kode" => "Berhasil",
+                "pesan" => "Penambahan resep berhasil!"
+            ];
         }
         else{
-            $success="Gagal";
+            $response=[
+                "kode" => "Gagal",
+                "pesan" => "Penambahan resep gagal! Silahkan coba lagi"
+            ];
         }
 
-        return $success;
+        return $response;
     }
 }

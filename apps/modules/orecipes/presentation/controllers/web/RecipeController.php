@@ -41,8 +41,8 @@ class RecipeController extends Controller
         $validRequest = new ValidityAddRecipeRequest($id);
         $validResponse = $this->validityAddRecipeService->handle($validRequest);
 
-        if($validResponse != "Success"){
-            $this->flashSession->error($validResponse);
+        if($validResponse['kode'] === "Gagal"){
+            $this->flashSession->error($validResponse['pesan']);
             return $this->response->redirect('orecipes/recipe');
         }
     }
@@ -50,20 +50,24 @@ class RecipeController extends Controller
     public function addSubmitAction(){
         if ($this->request->isPost()) {
             $judul = $this->request->getPost('judul');
-            $isi = $this->request->getPost('isi');
+            $isi = nl2br($this->request->getPost('isi'));
             $id_user=$this->session->get('id');
 
             $request = new AddRecipeRequest($judul, $isi, $id_user);
             $response = $this->addRecipeService->handle($request);
-            if($response==="Success"){
+
+            if($response['kode']==="Berhasil"){
+                $this->flashSession->success($response['pesan']);
                 return $this->response->redirect('orecipes/recipe');
             }
             else{
+                $this->flashSession->error($response['pesan']);
                 return $this->response->redirect('orecipes/recipe/add');
             }
         }
         else{
-            echo "Gagal!!!";
+            $this->flashSession->error("Harap isi semua bidang!");
+            return $this->response->redirect('orecipes/recipe/add');
         }
     }
 
@@ -78,55 +82,65 @@ class RecipeController extends Controller
     }
 
     public function editSubmitAction(){
+        $recipeId = $this->request->getPost('recipeId');
         if ($this->request->isPost()) {
-            $recipeId = $this->request->getPost('recipeId');
             $judul = $this->request->getPost('judul');
             $isi = $this->request->getPost('isi');
 
             $request = new EditRecipeRequest($recipeId, $judul, $isi);
             $response = $this->editRecipeService->handle($request);
-            if($response==="Success"){
+
+            if($response['kode']==="Berhasil"){
+                $this->flashSession->success($response['pesan']);
                 return $this->response->redirect('orecipes/recipe');
             }
             else{
+                $this->flashSession->error($response['pesan']);
                 return $this->response->redirect('orecipes/recipe/edit/' . $recipeId);
             }
         }
         else{
-            echo "Gagal!!!";
+            $this->flashSession->error("Harap isi semua bidang!");
+            return $this->response->redirect('orecipes/recipe/edit/' . $recipeId);
         }
     }
 
     public function deleteAction($id){
         $request = new deleteRecipeRequest($id);
         $response = $this->deleteRecipeService->handle($request);
-        if($response==="Success"){
+        if($response['kode']==="Berhasil"){
+            $this->flashSession->success($response['pesan']);
             return $this->response->redirect('orecipes/recipe');
         }
         else{
-            echo "Gagal!!!";
+            $this->flashSession->error($response['pesan']);
+            return $this->response->redirect('orecipes/recipe/show/' . $id);
         }
     }
 
     public function likeAction($id){
         $request = new addLikeRequest($id, $this->session->get("id"));
         $response= $this->addLikeService->handle($request);
-        if($response==="Success"){
-            return $this->response->redirect('orecipes/recipe/show/'.$id);
+        if($response['kode']==="Berhasil"){
+            $this->flashSession->success($response['pesan']);
+            return $this->response->redirect('orecipes/recipe/show/' . $id);
         }
         else{
-            echo "Gagal!!!";
+            $this->flashSession->error($response['pesan']);
+            return $this->response->redirect('orecipes/recipe/show/' . $id);
         }
     }
 
     public function unlikeAction($id){
         $request = new unlikeRequest($id, $this->session->get("id"));
         $response= $this->unlikeService->handle($request);
-        if($response==="Success"){
-            return $this->response->redirect('orecipes/recipe/show/'.$id);
+        if($response['kode']==="Berhasil"){
+            $this->flashSession->success($response['pesan']);
+            return $this->response->redirect('orecipes/recipe/show/' . $id);
         }
         else{
-            echo "Gagal!!!";
+            $this->flashSession->error($response['pesan']);
+            return $this->response->redirect('orecipes/recipe/show/' . $id);
         }
     }
 }

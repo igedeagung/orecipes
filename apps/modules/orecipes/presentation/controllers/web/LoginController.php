@@ -16,6 +16,7 @@ class LoginController extends Controller
 
     public function indexAction(){
         if($this->session->has("id")){
+            $this->flashSession->warning("Anda telah login");
             return $this->response->redirect('orecipes/recipe');
         }
     }
@@ -27,22 +28,26 @@ class LoginController extends Controller
             $request = new LoginRequest($email, $password);
             $response = $this->loginService->handle($request);
 
-            $id = $response[0]['id'];
-            if($response){
+            $id = $response['id'];
+            if($response['kode']==="Berhasil"){
                 $this->session->set("id", $id);
+                $this->flashSession->success($response['pesan']);
                 return $this->response->redirect('orecipes/recipe');
             }
             else{
-                return $this->response->redirect('orecipes/login');;
+                $this->flashSession->error($response['pesan']);
+                return $this->response->redirect('orecipes/login');
             }
         }
         else{
-            echo "Gagal!!!";
+            $this->flashSession->error("Harap isi semua bidang!");
+            return $this->response->redirect('orecipes/login');
         }
     }
 
     public function logoutAction(){
         $this->session->destroy();
+        $this->flashSession->success("Anda telah keluar dari akun");
         $this->response->redirect();
     }
 }

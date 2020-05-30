@@ -17,15 +17,15 @@ class ValidityAddRecipeService
     public function handle(ValidityAddRecipeRequest $request)
     {
         $userId = $request->getIdUser();
-        $response = $this->userRepository->checkCount($userId);
+        $result = $this->userRepository->checkCount($userId);
 
-        if($response[0]['count_likes'] >= 10){
-            $success="Success";
-        }
-        else{
-            $success="Anda tidak berhak menulis resep, karena belum menyukai 10 resep";
+        if($result[0]['count_likes'] < 10){
+            $response=[
+                "kode" => "Gagal",
+                "pesan" => "Anda tidak berhak menulis resep, karena belum menyukai 10 resep!"
+            ];
         }
 
-        return $success;
+        return $response;
     }
 }

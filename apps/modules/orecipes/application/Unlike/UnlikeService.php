@@ -21,20 +21,26 @@ class UnlikeService
     public function handle(UnlikeRequest $request)
     {
         $like = Likes::makeLikes($request->getIdUser(), $request->getIdRecipes());
-        $response = $this->likeRepository->delete($like);
+        $result1 = $this->likeRepository->delete($like);
 
         $userFromDb = $this->userRepository->byId($request->getIdUser());
         $userLikeNew = new UserLikes($userFromDb[0]['id'], $userFromDb[0]['count_likes']);
         $userLikeNew->minLike();
-        $response2 = $this->userRepository->updateLike($userLikeNew);
+        $result2 = $this->userRepository->updateLike($userLikeNew);
 
-        if($response){
-            $success="Success";
+        if($result1 && $result2){
+            $response=[
+                "kode" => "Berhasil",
+                "pesan" => "Batal meyukai resep berhasil!"
+            ];
         }
         else{
-            $success="Gagal";
+            $response=[
+                "kode" => "Gagal",
+                "pesan" => "Batal meyukai resep gagal! Silahkan coba lagi"
+            ];
         }
 
-        return $success;
+        return $response;
     }
 }

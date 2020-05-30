@@ -15,15 +15,21 @@ class DeleteRecipeService
 
     public function handle(DeleteRecipeRequest $request)
     {
-        $response = $this->recipeRepository->delete($request->getId());
+        $result = $this->recipeRepository->delete($request->getId());
 
-        if($response){
-            $success="Success";
+        if($result){
+            $response=[
+                "kode" => "Berhasil",
+                "pesan" => "Resep berhasil dihapus!"
+            ];
         }
         else{
-            $success="Gagal";
+            $response=[
+                "kode" => "Gagal",
+                "pesan" => "Resep gagal dihapus! Silahkan coba lagi"
+            ];
         }
 
-        return $success;
+        return $response;
     }
 }

@@ -16,17 +16,32 @@ class RegisterService
 
     public function handle(RegisterRequest $request)
     {
-        $user = Users::makeUser($request->getNama(), $request->getEmail(),$request->getPassword());
+        if($request->getPassword() === $request->getKPassword())
+        {
+            $user = Users::makeUser($request->getNama(), $request->getEmail(),$request->getPassword());
 
-        $response = $this->userRepository->save($user);
+            $result = $this->userRepository->save($user);
 
-        if($response){
-            $success="Success";
+            if($result){
+                $response=[
+                    "kode" => "Berhasil",
+                    "pesan" => "Pendaftaran akun berhasil!"
+                ];
+            }
+            else{
+                $response=[
+                    "kode" => "Gagal",
+                    "pesan" => "Pendaftaran akun gagal! Silahkan coba lagi"
+                ];
+            }
         }
         else{
-            $success="Gagal";
+            $response=[
+                "kode" => "Gagal",
+                "pesan" => "Password dan konfirmasi password tidak cocok!"
+            ];
         }
 
-        return $success;
+        return $response;
     }
 }

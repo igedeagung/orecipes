@@ -2,6 +2,7 @@
 
 namespace Orecipes\Application\EditRecipe;
 
+use Orecipes\Domain\Model\Recipes;
 use Orecipes\Domain\Repository\RecipeRepository;
 
 class EditRecipeService
@@ -15,15 +16,22 @@ class EditRecipeService
 
     public function handle(EditRecipeRequest $request)
     {
-        $response = $this->recipeRepository->update($request->getId(), $request->getJudul(),$request->getIsi());
+        $recipe = Recipes::makeRecipe($request->getId(), $request->getJudul(),$request->getIsi());
+        $result = $this->recipeRepository->update($recipe);
 
-        if($response){
-            $success="Success";
+        if($result){
+            $response=[
+                "kode" => "Berhasil",
+                "pesan" => "Perubahan resep berhasil disimpan!"
+            ];
         }
         else{
-            $success="Gagal";
+            $response=[
+                "kode" => "Gagal",
+                "pesan" => "Perubahan resep gagal disimpan! Silahkan coba lagi"
+            ];
         }
 
-        return $success;
+        return $response;
     }
 }

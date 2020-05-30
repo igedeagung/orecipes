@@ -21,20 +21,26 @@ class AddLikeService
     public function handle(AddLikeRequest $request)
     {
         $like = Likes::makeLikes($request->getIdUser(), $request->getIdRecipes());
-        $response1 = $this->likeRepository->save($like);
+        $result1 = $this->likeRepository->save($like);
 
         $userFromDb = $this->userRepository->byId($request->getIdUser());
         $userLikeNew = new UserLikes($userFromDb[0]['id'], $userFromDb[0]['count_likes']);
         $userLikeNew->addLike();
-        $response2 = $this->userRepository->updateLike($userLikeNew);
+        $result2 = $this->userRepository->updateLike($userLikeNew);
 
-        if($response1 && $response2){
-            $success="Success";
+        if($result1 && $result2){
+            $response=[
+                "kode" => "Berhasil",
+                "pesan" => "Resep berhasil disukai!"
+            ];
         }
         else{
-            $success="Gagal";
+            $response=[
+                "kode" => "Gagal",
+                "pesan" => "Resep gagal disukai! Silahkan coba lagi"
+            ];
         }
 
-        return $success;
+        return $response;
     }
 }

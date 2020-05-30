@@ -16,7 +16,20 @@ class LoginService
 
     public function handle(LoginRequest $request)
     {
-        $response = $this->userRepository->find($request->getEmail(), $request->getPassword());
+        $result = $this->userRepository->find($request->getEmail(), $request->getPassword());
+        if($result != NULL){
+            $response=[
+                "kode" => "Berhasil",
+                "pesan" => "Login berhasil!",
+                "id" => $result[0]['id']
+            ];
+        }
+        else{
+            $response=[
+                "kode" => "Gagal",
+                "pesan" => "Login gagal! Silahkan coba lagi"
+            ];
+        }
         return $response;
     }
 }

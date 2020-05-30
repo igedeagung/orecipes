@@ -41,10 +41,10 @@ class SqlRecipeRepository implements RecipeRepository
             ->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    public function update(int $id, string $judul, string $isi)
+    public function update(Recipes $recipe)
     {
         $statement = sprintf("UPDATE recipes SET judul=:judul, isi=:isi WHERE id=:id" );
-        $params = ['judul' => $judul, 'isi' => $isi, 'id' => $id];
+        $params = ['id' => $recipe->id_user() , 'judul' => $recipe->judul(), 'isi' => $recipe->Isi()];
 
         return $this->db->execute($statement, $params);
     }

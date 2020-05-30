@@ -21,19 +21,23 @@ class RegisterController extends Controller
             $nama = $this->request->getPost('nama');
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
+            $kpassword = $this->request->getPost('kpassword');
 
-            $request = new RegisterRequest($nama, $email, $password);
+            $request = new RegisterRequest($nama, $email, $password, $kpassword);
             $response = $this->registerService->handle($request);
             
-            if($response==="Success"){
+            if($response['kode']==="Berhasil"){
+                $this->flashSession->success($response['pesan']);
                 return $this->response->redirect('orecipes/login');
             }
             else{
+                $this->flashSession->error($response['pesan']);
                 return $this->response->redirect('orecipes/register');
             }
         }
         else{
-            echo "Gagal!!!";
+            $this->flashSession->error("Harap isi semua bidang!");
+            return $this->response->redirect('orecipes/register');
         }
         
     }

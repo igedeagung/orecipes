@@ -9,7 +9,7 @@ interface RecipeRepository
     public function showAllRecipe();
     public function save(Recipes $recipe);
     public function showRecipeById(int $id);
-    public function update(int $id, string $judul, string $isi);
+    public function update(Recipes $recipe);
     public function delete(int $id);
     public function getFlagLike(int $id_recipes,$id_user);
 }
