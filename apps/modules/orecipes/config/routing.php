@@ -3,18 +3,32 @@
 $namespace = 'Orecipes\Presentation\Controllers\Web';
 $module = 'orecipes';
 
-$router->addGet('/orecipes/register', [
+$router->addPost('/orecipes/profil/register', [
     'namespace' => $namespace,
     'module' => $module,
-    'controller' => 'register',
-    'action' => 'index'
+    'controller' => 'profil',
+    'action' => 'registerSubmit'
 ]);
 
-$router->addPost('/orecipes/register', [
+$router->addPost('/orecipes/profil/login', [
     'namespace' => $namespace,
     'module' => $module,
-    'controller' => 'register',
-    'action' => 'submit'
+    'controller' => 'profil',
+    'action' => 'loginSubmit'
+]);
+
+$router->addGet('/orecipes/profil/logout', [
+    'namespace' => $namespace,
+    'module' => $module,
+    'controller' => 'profil',
+    'action' => 'logout'
+]);
+
+$router->addPost('/orecipes/profil/edit', [
+    'namespace' => $namespace,
+    'module' => $module,
+    'controller' => 'profil',
+    'action' => 'editSubmit'
 ]);
 
 $router->addGet('/orecipes/recipe', [
@@ -22,20 +36,6 @@ $router->addGet('/orecipes/recipe', [
     'module' => $module,
     'controller' => 'recipe',
     'action' => 'index'
-]);
-
-$router->addPost('/orecipes/login', [
-    'namespace' => $namespace,
-    'module' => $module,
-    'controller' => 'login',
-    'action' => 'submit'
-]);
-
-$router->addGet('/orecipes/logout', [
-    'namespace' => $namespace,
-    'module' => $module,
-    'controller' => 'login',
-    'action' => 'logout'
 ]);
 
 return $router;

@@ -15,7 +15,7 @@
                     <div class="align-self-center">
                         <h1 class=" mb-0">Let Food Be Your Medicine</h1>
                         <p class="lead" style="font-size: 16px;">Obati rasa laparmu dengan berbagai resep yang menarik</p>
-                        <a href="orecipes/register" class="btn btn-lg btn-primary"> Daftar Sekarang</a>
+                        <a href="orecipes/profil/register" class="btn btn-lg btn-primary"> Daftar Sekarang</a>
                         <a href="orecipes/recipe" class="btn btn-lg btn-primary">Lihat Resep</a>
                     </div>
                     <div class="just">

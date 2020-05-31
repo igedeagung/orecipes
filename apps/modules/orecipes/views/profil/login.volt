@@ -22,7 +22,7 @@
         <div class="card shadow " >
           <div class="card-body">
                 <h3 class="card-title font-weight-bolder p-3 text-center">LOGIN</h3>
-                <form action="/orecipes/login" method="POST">
+                <form action="/orecipes/profil/login" method="POST">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
                         <input type="email" name="email" class="form-control" required>

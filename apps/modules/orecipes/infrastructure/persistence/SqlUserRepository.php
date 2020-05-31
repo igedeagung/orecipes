@@ -58,4 +58,19 @@ class SqlUserRepository implements UserRepository
         return $this->db->query($statement, $params)
             ->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getUserById(int $id){
+        $statement = sprintf("SELECT * FROM users WHERE id=:id");
+        $params = ['id' => $id];
+
+        return $this->db->query($statement, $params)
+            ->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function update(int $id, string $nama, string $email){
+        $statement = sprintf("UPDATE users SET nama=:nama, email=:email WHERE id=:id");
+        $params = ['nama' => $nama, 'email' => $email, 'id' => $id];
+
+        return $this->db->execute($statement, $params);
+    }
 }

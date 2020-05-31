@@ -11,6 +11,8 @@ use Orecipes\Application\DeleteRecipe\DeleteRecipeService;
 use Orecipes\Application\SearchRecipe\SearchRecipeService;
 use Orecipes\Application\Register\RegisterService;
 use Orecipes\Application\Login\LoginService;
+use Orecipes\Application\GetUserById\GetUserByIdService;
+use Orecipes\Application\EditProfil\EditProfilService;
 use Phalcon\Mvc\View;
 use Orecipes\Infrastructure\Persistence\SqlRecipeRepository;
 use Orecipes\Infrastructure\Persistence\SqlUserRepository;
@@ -120,6 +122,14 @@ $di->set('registerService', function () use ($di) {
 
  $di->set('loginService', function () use ($di) {
     return new LoginService($di->get('userRepository'));
+ });
+
+ $di->set('getUserByIdService', function () use ($di) {
+    return new GetUserByIdService($di->get('userRepository'));
+ });
+
+ $di->set('editProfilService', function () use ($di) {
+    return new EditProfilService($di->get('userRepository'));
  });
 
  $di->set('editRecipeService', function () use ($di) {

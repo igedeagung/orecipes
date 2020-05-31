@@ -16,7 +16,7 @@
         <div class="card shadow " >
           <div class="card-body">
               <h3 class="card-title font-weight-bolder p-3 text-center">DAFTAR AKUN</h3>
-              <form action="/orecipes/register" method="POST">
+              <form action="/orecipes/profil/register" method="POST">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nama</label>
                     <input type="text" name="nama"class="form-control" required>
@@ -35,7 +35,7 @@
                   </div>
                   <div class="form-group">
                     <button type="submit" class="btn btn-sm btn-primary">Daftar</button>
-                    <small class="content-align-left"><a href="/orecipes/login">Masuk, jika memiliki akun</a></small>
+                    <small class="content-align-left"><a href="/orecipes/profil/login">Masuk, jika memiliki akun</a></small>
                   </div>
                 </form>
           </div>

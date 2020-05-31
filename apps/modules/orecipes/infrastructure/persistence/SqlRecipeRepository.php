@@ -27,7 +27,7 @@ class SqlRecipeRepository implements RecipeRepository
     public function save(Recipes $recipe)
     {
         $statement = sprintf("INSERT INTO recipes(id_user, judul, isi) VALUES(:id_user, :judul, :isi)" );
-        $params = ['id_user' => $recipe->id_user() , 'judul' => $recipe->judul(), 'isi' => $recipe->Isi()];
+        $params = ['id_user' => $recipe->id() , 'judul' => $recipe->judul(), 'isi' => $recipe->Isi()];
 
         return $this->db->execute($statement, $params);
     }
@@ -44,7 +44,7 @@ class SqlRecipeRepository implements RecipeRepository
     public function update(Recipes $recipe)
     {
         $statement = sprintf("UPDATE recipes SET judul=:judul, isi=:isi WHERE id=:id" );
-        $params = ['id' => $recipe->id_user() , 'judul' => $recipe->judul(), 'isi' => $recipe->Isi()];
+        $params = ['id' => $recipe->id() , 'judul' => $recipe->judul(), 'isi' => $recipe->Isi()];
 
         return $this->db->execute($statement, $params);
     }

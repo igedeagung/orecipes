@@ -4,21 +4,21 @@ namespace Orecipes\Domain\Model;
 
 class Recipes
 {
-    private $id_user;
+    private $id;
     private $judul;
     private $isi;
 
-    public function __construct($id_user, $judul, $isi)
+    public function __construct($id, $judul, $isi)
     {
-        $this->id_user = $id_user;
+        $this->id = $id;
         $this->judul = $judul;
         $this->isi = $isi;
 
     }
 
-    public function id_user() : int
+    public function id() : int
     {
-        return $this->id_user;
+        return $this->id;
     }
 
     public function judul() : string
@@ -31,9 +31,9 @@ class Recipes
         return $this->isi;
     }
 
-    public static function makeRecipe($id_user, $judul, $isi): Recipes
+    public static function makeRecipe($id, $judul, $isi): Recipes
     {
-        return new Recipes($id_user, $judul, $isi);
+        return new Recipes($id, $judul, $isi);
     }
 
 }
