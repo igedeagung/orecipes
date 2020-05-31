@@ -12,4 +12,5 @@ interface RecipeRepository
     public function update(Recipes $recipe);
     public function delete(int $id);
     public function getFlagLike(int $id_recipes,$id_user);
+    public function searchByKey(string $key);
 }

@@ -15,9 +15,22 @@ class ShowRecipeByIdService
 
     public function handle($id)
     {
-        $recipes = $this->repository->showRecipeById($id);
+        $result = $this->repository->showRecipeById($id);
         
-        return $recipes;
+        if($result){
+            $response=[
+                "kode" => "Berhasil",
+                "hasil" => $result
+            ];
+        }
+        else{
+            $response=[
+                "kode" => "Gagal",
+                "pesan" => "Resep tidak ditemukan!"
+            ];
+        }
+
+        return $response;
     }
     public function getFlagLike($id_recipes, $id_user){
         $flag=$this->repository->getFlagLike($id_recipes, $id_user);

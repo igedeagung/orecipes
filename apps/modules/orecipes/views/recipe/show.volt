@@ -27,6 +27,7 @@
               <hr style="height:1.5px;border-width:0;color:gray;background-color:gray">
               <h5>{{ recipe[0]['judul'] }}</h5>
               <p><br>{{ recipe[0]['isi'] }}</p>
+              <span class="float-left" style="font-size:12px;color:gray">{{ recipe[0]['nama'] }} menerbitkan resep ini</span>
               {% if session.has('id') %}
                 {% if flagLike == 0 %}
                 <a href="/orecipes/recipe/like/{{ recipe[0]['id'] }}"><span class="float-right"><i class="fa fa-heart-o fa-2x"></i></span></a>

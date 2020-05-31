@@ -16,6 +16,8 @@ use Orecipes\Application\EditRecipe\EditRecipeService;
 use Orecipes\Application\EditRecipe\EditRecipeRequest;
 use Orecipes\Application\DeleteRecipe\DeleteRecipeService;
 use Orecipes\Application\DeleteRecipe\DeleteRecipeRequest;
+use Orecipes\Application\SearchRecipe\SearchRecipeService;
+use Orecipes\Application\SearchRecipe\SearchRecipeRequest;
 
 class RecipeController extends Controller
 {
@@ -32,6 +34,7 @@ class RecipeController extends Controller
     }
 
     public function indexAction(){
+        //var_dump($this->showRecipeService->handle());die();
         $this->view->recipes=$this->showRecipeService->handle();
     }
 
@@ -74,7 +77,14 @@ class RecipeController extends Controller
     public function showAction($id){
         $this->view->flagLike=$this->showRecipeByIdService->getFlagLike($id, $this->session->get('id'));
         
-        $this->view->recipe=$this->showRecipeByIdService->handle($id);
+        $response = $this->showRecipeByIdService->handle($id);
+        if($response['kode'] === "Berhasil"){
+            $this->view->recipe=$response['hasil'];
+        }
+        else{
+            $this->flashSession->error($response['pesan']);
+            return $this->response->redirect('orecipes/recipe');
+        }
     }
     
     public function editAction($id){
@@ -142,5 +152,33 @@ class RecipeController extends Controller
             $this->flashSession->error($response['pesan']);
             return $this->response->redirect('orecipes/recipe/show/' . $id);
         }
+    }
+
+    public function searchAction(){
+        if ($this->request->isPost()) {
+            $key = $this->request->getPost('search');
+
+            $request = new SearchRecipeRequest($key);
+            $response = $this->searchRecipeService->handle($request);
+
+            if($response['kode']==="Berhasil"){
+                $this->flashSession->success($response['pesan']);
+                $this->dispatcher->forward(
+                    [
+                        'controller' => 'recipe',
+                        'action'     => 'searchResult',
+                        'params'     => [$response['hasil']]
+                    ]
+                );
+            }
+            else{
+                $this->flashSession->error($response['pesan']);
+                return $this->response->redirect('orecipes/recipe');
+            }
+        }
+    }
+
+    public function searchResultAction($result){
+        $this->view->recipes=$result;
     }
 }

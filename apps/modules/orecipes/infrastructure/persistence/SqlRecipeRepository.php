@@ -34,7 +34,7 @@ class SqlRecipeRepository implements RecipeRepository
 
     public function showRecipeById(int $id)
     {
-        $statement = sprintf("SELECT * FROM recipes WHERE id=:id");
+        $statement = sprintf("SELECT recipes.*, users.nama FROM recipes, users WHERE recipes.id=:id AND recipes.id_user=users.id");
         $params=['id'=> $id];
 
         return $this->db->query($statement, $params)
@@ -70,5 +70,14 @@ class SqlRecipeRepository implements RecipeRepository
         else{
             return 0;
         }
+    }
+
+    public function searchByKey(string $key)
+    {
+        $statement = sprintf("SELECT * FROM recipes WHERE judul LIKE :key OR isi LIKE :key");
+        $params = ['key'=> '%' . $key . '%'];
+
+        return $this->db->query($statement, $params)
+            ->fetchAll(PDO::FETCH_ASSOC);
     }
 }

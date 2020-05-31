@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orecipes - Resep</title>
+    <title>Orecipes - Cari Resep</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -38,21 +38,6 @@
     <!--Section: Content-->
     <section class="">
       <!-- Section heading -->
-      <center>
-        <form action="/orecipes/recipe/search" method="post">
-            <div class="box">
-              <div class="container-1">
-                  <span class="icon"><i class="fa fa-search"></i></span>
-                  <input type="search" name="search" id="search" placeholder="Cari Resep" />
-              </div>
-            </div>
-        </form><br>
-      </center>
-
-        {% if session.has('id') %}
-        <center><a href="/orecipes/recipe/add"><button class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Resep</button></a></center><br>
-        {% endif %}
-
         <div class="row">
           {% for recipe in recipes %}
           <!--Grid column-->
@@ -82,41 +67,11 @@
           {% endfor %}
         </div>
         <!--Grid column-->
+        <a href="/orecipes/recipe/index" class="btn btn-primary">Kembali ke semua resep</a>
       </div>
   
     </section>
     <!--Section: Content-->
-  
-    <style>
-      .container-1{
-        width: 500px;
-        vertical-align: middle;
-        position: relative;
-      }
-      .container-1 input#search{
-        width: 500px;
-        height: 50px;
-        background: #1b1e24;
-        border: none;
-        font-size: 10pt;
-        color: #868e96 ;
-        padding-left: 45px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-      }
-      .container-1 .icon{
-        position: absolute;
-        margin-left: 17px;
-        margin-top: 13px;
-        z-index: 1;
-        color: #4f5b66;
-      }
-      .container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
-        outline:none;
-        background: #ffffff;
-      }
-    </style>
   
   </div>
 

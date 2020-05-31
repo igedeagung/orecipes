@@ -8,6 +8,7 @@ use Orecipes\Application\AddLike\AddLikeService;
 use Orecipes\Application\Unlike\UnlikeService;
 use Orecipes\Application\EditRecipe\EditRecipeService;
 use Orecipes\Application\DeleteRecipe\DeleteRecipeService;
+use Orecipes\Application\SearchRecipe\SearchRecipeService;
 use Orecipes\Application\Register\RegisterService;
 use Orecipes\Application\Login\LoginService;
 use Phalcon\Mvc\View;
@@ -127,4 +128,8 @@ $di->set('registerService', function () use ($di) {
 
  $di->set('deleteRecipeService', function () use ($di) {
     return new DeleteRecipeService($di->get('recipeRepository'));
+ });
+
+ $di->set('searchRecipeService', function () use ($di) {
+    return new SearchRecipeService($di->get('recipeRepository'));
  });
