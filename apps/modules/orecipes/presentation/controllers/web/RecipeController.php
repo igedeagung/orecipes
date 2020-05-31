@@ -34,7 +34,6 @@ class RecipeController extends Controller
     }
 
     public function indexAction(){
-        //var_dump($this->showRecipeService->handle());die();
         $this->view->recipes=$this->showRecipeService->handle();
     }
 
@@ -88,7 +87,14 @@ class RecipeController extends Controller
     }
     
     public function editAction($id){
-        $this->view->recipe=$this->showRecipeByIdService->handle($id);
+        $response = $this->showRecipeByIdService->handle($id);
+        if($response['kode'] === "Berhasil"){
+            $this->view->recipe=$response['hasil'];
+        }
+        else{
+            $this->flashSession->error($response['pesan']);
+            return $this->response->redirect('orecipes/recipe');
+        }
     }
 
     public function editSubmitAction(){

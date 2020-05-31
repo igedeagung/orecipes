@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orecipes - Detail Resep</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="css/styles.css" rel="stylesheet" />
-    <style>
-        html,body{
-            height: 100%;
-        }
-    </style>
+  {% include 'templates\header.volt' %}
+  <title>Orecipes - Detail Resep</title>
 </head>
+
 <body class="bg-dark">
     <div class="d-flex justify-content-center h-100">
       <div class="my-auto" style="width: 25%;">
@@ -48,5 +40,10 @@
         </div></center>
       </div>
     </div>
+    <style>
+        html,body{
+            height: 100%;
+        }
+    </style>
 </body>
 </html>
